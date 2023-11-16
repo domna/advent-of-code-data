@@ -5,14 +5,9 @@ import traceback
 from logging import getLogger
 
 from ._ipykernel import get_ipynb_path
-from .exceptions import AocdError
-from .exceptions import PuzzleLockedError
-from .models import default_user
-from .models import Puzzle
-from .models import User
-from .utils import AOC_TZ
-from .utils import blocker
-
+from .exceptions import AocdError, PuzzleLockedError
+from .models import Puzzle, User, default_user
+from .utils import AOC_TZ, blocker
 
 log = getLogger(__name__)
 
@@ -115,7 +110,7 @@ def get_day_and_year():
             filename.startswith("<"),  # crap like <decorator-gen-57>
             filename.endswith("ython3"),  # ipython3 alias
             basename.startswith("pydev_ipython_console"),  # PyCharm Python Console
-            "aocd" not in linetxt,
+            "aocd" not in linetxt and "aocf" not in linetxt,
             "ipykernel" in filename,
         ]
         visited.append(filename)
