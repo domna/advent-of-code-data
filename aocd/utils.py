@@ -8,8 +8,7 @@ import time
 from collections import deque
 from datetime import datetime
 from functools import cache
-from importlib.metadata import entry_points
-from importlib.metadata import version
+from importlib.metadata import entry_points, version
 from itertools import cycle
 from tempfile import NamedTemporaryFile
 from zoneinfo import ZoneInfo
@@ -19,11 +18,10 @@ import urllib3
 
 from .exceptions import DeadTokenError
 
-
 log = logging.getLogger(__name__)
-AOC_TZ = ZoneInfo("America/New_York")
+AOC_TZ = ZoneInfo("Europe/Berlin")
 _v = version("advent-of-code-data")
-USER_AGENT = f"github.com/wimglenn/advent-of-code-data v{_v} by hey@wimglenn.com"
+USER_AGENT = f"github.com/domna/advent-of-code-data v{_v} by hey@wimglenn.com"
 
 
 class HttpClient:
